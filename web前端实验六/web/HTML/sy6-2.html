@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+     //   定义数组并直接初始化数组元素的方法 1：
+    var classmates = new Array("张三","李四","王五","赵六","孙七");
+     //   定义数组并直接初始化数组元素的方法2：
+    var classmates = ["张三","李四","王五","赵六","孙七"];
+     //   先定义数组，后初始化数组元素：
+    var classmates = new Array();
+        classmates[0] = " 张 三 ";
+        classmates[1] = "李四";
+        document.write("根据下标输出"+"<br>");
+     for (var i=0; i<classmates.length; i++) {
+         document.writeln(classmates[i]);
+     }
+     document.writeln("<br>"+"根据变量输出"+"<br>");
+     for (var index in classmates) {
+         document.writeln(classmates[index]);
+     }
+</script>
+<hr>
+<script type="text/javascript">
+     document.writeln("Math对象的使用"+"<br>");
+     document.writeln("圆周率 = "+Math.PI+"<br>");
+     document.writeln("对4.5四舍五入= "+Math.round(4.5)+"<br>");
+     document.writeln("返回2的5次幂 = "+Math.pow(2,5)+"<br>");
+     document.writeln("返回0~1之间的随机数 = "+Math.random()+"<br>");
+     document.writeln("对4.5下舍入 = "+Math.floor(4.5)+"<br>");
+     document.writeln("对4.5上舍入 = "+Math.ceil(4.5)+"<br>");
+</script>
+<hr>
+<script type="text/javascript">
+    var currentdate = new Date();
+    document.writeln(currentdate.toString()+"<br>");
+    document.writeln("getFullYear()：返回年份（带世纪）= "+currentdate.getFullYear()+"<br>");
+    document.writeln("getMonth()：返回月份（0~11）= "+currentdate.getMonth()+"<br>");
+    document.writeln("getDate()：返回日期（1~31）= "+currentdate.getDate()+"<br>");
+    document.writeln("getDay()：返回星期（0~6）= "+currentdate.getDay()+"<br>");
+</script>
+<hr>
+<script type="text/javascript">
+    var s1 = new String("This is a new string") ;
+    var s2 = "This is a new string" ;
+    document.writeln("输出字符串s1 = "+s1+"<br>")
+    document.writeln("输出字符串s2 = "+s2+"<br>")
+    document.writeln("输出字符串长度 = "+s1.length+"<br>")
+    document.writeln("输出字符串转换小写字母 = "+s1.toLowerCase()+"<br>")
+    document.writeln("输出字符串转换大写字母 = "+s1.toUpperCase()+"<br>")
+    document.writeln("输出字符串中第三个字符下标为2 = "+s1.charAt(2)+"<br>")
+    document.writeln("输出字符串下标2长度5 = "+s1.substr(2,5)+"<br>")
+    document.writeln("输出字符串下标2到下标5(不包含) = "+s1.substring(2,5)+"<br>")
+</script>
+</body>
+</html>

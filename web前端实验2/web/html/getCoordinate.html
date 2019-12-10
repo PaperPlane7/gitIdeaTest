@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html style="margin: 0;">
+    <head>
+        <meta charset="UTF-8">
+        <title>超链接</title>
+    </head>
+    <body style="margin: 0;">
+        <img src="media/map.png" width="800px" onclick="fun()" alt="">
+        <form action="">
+            <input type="button" onclick="end()" value="完成" name="" id="">
+        </form>
+        <script>
+            var P = new Array(100);
+            var s = "";
+            function fun()
+            {
+                s += event.clientX.toString();
+                s+=",";
+                s += event.clientY.toString();
+                s+=",";
+            }
+
+            function end(){
+                document.write(s);
+                s = "";
+            }
+        </script>
+        
+    </body>
+</html>

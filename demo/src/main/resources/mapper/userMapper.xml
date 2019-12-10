@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace 对应自己的mapper接口 通常一个dao一个mapper文件-->
+<mapper namespace="com.example.demo.dao.UserDao">
+
+    <!-- return Type 可以使用别名 需要使用一个alias注解, 注意如果pojo对象的属性名不是跟数据库的列名对应 需要使用Map来映射-->
+    <select id="findUserById" resultType="user">
+        select * from user where id = #{uId};
+    </select>
+</mapper>

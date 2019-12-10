@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>时钟</title>
+    <style>
+        div{
+            background: lavender;
+            width: 50%;
+            height: 150px;
+        }
+    </style>
+</head>
+
+<body>
+<div>
+    现在是：
+    <span id="spanTip"></span>
+</div>
+
+<script>
+    function getDate(){
+        var date=new Date();
+        var x="pm";
+        var datestr=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+        if (date.getHours()>12){
+            datestr = datestr+x;
+        }
+        var span=document.getElementById("spanTip");
+        span.innerHTML=datestr;
+    }
+    setInterval("getDate()",1000);
+</script>
+</body>
+</html>

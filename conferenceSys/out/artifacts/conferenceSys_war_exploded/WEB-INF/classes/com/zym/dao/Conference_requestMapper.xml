@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zym.dao.Conference_requestMapper">
+    <insert id="addRequest">
+        insert into conference_system.conference_request(conId,cName,cSex,cIdNum,cTel,cCompany,cRoom)
+        value (#{conId},#{cName},#{cSex},#{cIdNum},#{cTel},#{cCompany},#{cRoom})
+    </insert>
+
+    <select id="queryRequest" resultType="Conference_request">
+        select *from conference_system.conference_request
+        where conId=#{conId}
+    </select>
+
+    <select id="queryAllRequest" resultType="Conference_request">
+        select *from conference_system.conference_request
+    </select>
+
+    <delete id="deleteConRe">
+        delete from conference_system.conference_request
+        where conId=#{conId}
+    </delete>
+
+</mapper>

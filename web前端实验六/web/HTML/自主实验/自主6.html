@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function maoPao() {
+        var arr = [16,61,0,99,46,23,18,97];
+        var a,b;
+        for (var i = arr.length-1 ;i>=1;i--){
+            for (var j=0;j<i;j++){
+                if (arr[j]>arr[j+1]){
+                    a=arr[j];
+                    b=arr[j+1];
+                    arr[j]=b;
+                    arr[j+1]=a;
+                }
+            }
+        }
+        for (var index in arr){
+            document.writeln(arr[index]+"<br>");
+        }
+    }
+</script>
+arr = [16,61,0,99,46,23,18,97]<br>
+<button onclick="maoPao()">冒泡算法</button>
+</body>
+</html>

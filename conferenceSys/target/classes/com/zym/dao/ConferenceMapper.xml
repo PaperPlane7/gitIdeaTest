@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zym.dao.ConferenceMapper">
+    <insert id="addConference">
+        insert into conference_system.conference(conId,conName,userId,conDescription,conCreateTime,conEndTime,conTime,conLocation,conGuest,conHotel)
+        value(#{conId},#{conName},#{userId},#{conDescription},#{conCreateTime},#{conEndTime},#{conTime},#{conLocation},#{conGuest},#{conHotel});
+    </insert>
+
+    <delete id="deleteConference">
+        delete from conference_system.conference
+        where conId=#{conId}
+    </delete>
+
+    <select id="queryAllConferenceJoinable" resultType="Conference">
+        select *from conference_system.conference
+        where conId not in
+        (
+        select conId  from conference_system.participate
+        where userId=#{userId}
+        )
+    </select>
+
+    <select id="queryConIdByTime" resultType="int">
+        select conference.conId from conference_system.conference
+        where conCreateTime=#{conCreateTime} and userId=#{userId}
+    </select>
+
+    <select id="queryConferenceById" resultType="Conference">
+        select *from conference_system.conference
+        where conId=#{conId}
+    </select>
+
+    <select id="queryConferenceByUserId" resultType="Conference">
+        select *from conference_system.conference
+        where userId=#{userId}
+    </select>
+
+    <select id="queryAllConference" resultType="Conference">
+        select *from conference_system.conference
+    </select>
+
+    <select id="queryAllConferenceNum" resultType="int">
+        select count(*)from conference_system.conference;
+    </select>
+
+    <select id="getConferenceNum" resultType="int">
+        select max(conId) as num
+        from conference_system.conference
+    </select>
+</mapper>

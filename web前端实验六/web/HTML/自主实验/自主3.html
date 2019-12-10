@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function getDay()
+    {
+        var dt = new Date(1999, 11, 15);
+        var today = new Date();
+        document.from1.result1.value=parseInt((today.getTime() - dt.getTime())/86400000);
+
+    }
+</script>
+<form name="from1">
+<!--    输入年： <input name="input1" type="text"><br>-->
+<!--    输入月： <input name="input2" type="text"><br>-->
+<!--    输入日： <input name="input3" type="text"><br>-->
+    <input type="button" onclick="getDay()" value="有多少天"><br>
+从1999年11月15日到2019年11月25日（今天）的天数为<input name="result1" type="text"><br>
+</form>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /*第 1 图层样式*/
+        .div1{background-color:#f2f9fd; color:#66ffff; width:100%; height:30px;}
+        /*第 2 图层样式*/
+        .div2{background-color:#f2f9fd; color:#66ffff; width:100%; height:300px; margin-top:3px;}
+        /*单元格1 样式*/
+        .td1{line-height:22px; font-size:18px; color:#339966; width:100px; font-weight:bold;}
+        /*单元格2 样式*/
+        .td2{line-height:42px; font-size:18px; color:#339966; width:100px; font-weight:bold;}
+        /*标题1 样式*/
+        .bt1{font-size:30px; font-family:黑体; font-weight:bold; text-align:left; width:500px; color:#0033cc;}
+        /*标题2 样式*/
+        .bt2{font-size:22px; font-family:黑体; font-weight:bold; text-align:left; width:200px; color:#0033cc;}
+    </style>
+</head>
+<body>
+<div>
+    <table class="div1">
+        <tr>
+            <td class="bt1">留言板</td>
+            <td class="bt2">科技工作者建言</td>
+        </tr>
+    </table>
+</div>
+<div>
+    <form>
+        <table class="div2">
+            <tr>
+                <td colspan="3" style="color: red;font-weight: bold">发表留言</td>
+            </tr>
+            <tr>
+                <td class="td2">姓名:</td>
+                <td colspan="2"><input type="text" /></td>
+            </tr>
+            <tr>
+                <td class="td2">电子邮件:</td>
+                <td colspan="2"><input type="email" /></td>
+            </tr>
+            <tr>
+                <td class="td2">分类</td>
+                <td style="color: red;font-weight: bold">科技工作者建言<input name="建言" type="radio"/>不保密<input name="建言" type="radio"/>保密</td>
+                <td style="color: red;font-weight: bold">留言类型：
+                    <select>
+                    <option value="类型1">类型1</option>
+                    <option value="类型2">类型2</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="td2">留言</td>
+                <td colspan="2"><textarea name="note" style="width:50%;height:100px;resize:none;" required></textarea></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="color: #0033cc;">注：如果您的留言不便公开，请选择保密选项</td>
+            </tr>
+            <tr style="text-align: center">
+                <td colspan="3"><input type="button" value="提交"><input type="button" value="清空"></td>
+            </tr>
+            <tr>
+                <td colspan="3" style="color:black;">请遵守国家有关法律、法规。尊重网上道德，承担一切因您的行为。。。</td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <h4>选择员工</h4>
+</div>
+<div>
+    <select id="s0" onchange="show()">
+        <option value="市场部">市场部</option>
+        <option value="销售部">销售部</option>
+    </select>
+</div>
+
+<div>
+
+    <table>
+        <tr>
+            <td rowspan="5">
+                <select name="" multiple="true" style="height: 90px; width: 150px" id="s1">
+                    <option value="哇哈哈">哇哈哈</option>
+                    <option value="农夫山泉">农夫山泉</option>
+                </select>
+            </td>
+            <td>
+                <button onclick="rightMove()">></button>
+            </td>
+            <td rowspan="5">
+                <select name="" multiple="true" style="height: 90px; width: 150px" id="s2">
+                    <option value="杰克">杰克</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="rightAllMove()">>>></button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="leftMove()"><</button>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="leftAllMove()"><<<</button>
+            </td>
+        </tr>
+        <tr></tr>
+    </table>
+</div>
+<script>
+    var temp1 = ['哇哈哈','农夫山泉'];
+    var temp2 = ['可口可乐','百事可乐','芬达'];
+    function show() {
+        var s0=document.getElementById("s0");
+        var index1=s0.selectedIndex;
+        var s1=document.getElementById("s1");
+        document.getElementById('s1').options.length=0;
+        if (index1 === 0){
+            for (var x = 0;x<temp1.length;x++){
+                var y=document.createElement('option');
+                y.text=temp1[x];
+                s1.add(y,null);
+            }
+        }else {
+            for (var x=0;x<temp2.length;x++){
+                var y=document.createElement('option');
+                y.text=temp2[x];
+                s1.add(y,null);
+            }
+        }
+    }
+    
+    function rightMove() {
+        var s1=document.getElementById("s1");
+        var index1=s1.selectedIndex;
+        var options1=s1.options;
+        var selected = options1[index1];
+        var s0=document.getElementById("s0");
+        var index0=s0.selectedIndex;
+        if (index0===0){
+            temp1.splice(index1,1)
+        }else {
+            temp2.splice(index1,1)
+        }
+        s1.remove(index1);
+        var s2=document.getElementById("s2");
+        s2.add(selected,null);
+    }
+    function rightAllMove() {
+        var s2 = document.getElementById("s2");
+        var index0 = document.getElementById("s0").selectedIndex;
+        if (index0==0){
+            for (var x=0;x<temp1.length;x++){
+                var y=document.createElement('option');
+                y.text=temp1[x];
+                s2.add(y,null);
+            }
+            temp1.length =0;
+        }else {
+            for (var x=0;x<temp2.length;x++){
+                var y=document.createElement('option');
+                y.text=temp2[x];
+                s2.add(y,null);
+            }
+            temp2.length =0;
+        }
+        show();
+    }
+    function leftMove() {
+        var s0= document.getElementById("s0");
+        var s1= document.getElementById("s1");
+        var s2 = document.getElementById("s2");
+        var index0 = s0.selectedIndex;
+        var index2 = s2.selectedIndex;
+        var option = s2.options;
+        var selected = option[index2];
+        if (index0==0){
+            temp1.push(selected.value);
+        }else {
+            temp2.push(selected.value)
+        }
+        s2.remove(index2);
+        show()
+    }
+    function leftAllMove() {
+        var s0= document.getElementById("s0");
+        var s1= document.getElementById("s1");
+        var s2 = document.getElementById("s2");
+        var index0 = s0.selectedIndex;
+        if (index0==0){
+            for (var x=0;x<s2.options.length;x++){
+                temp1.push(s2.options[x].value);
+            }
+        }else {
+            for (var x=0;x<s2.options.length;x++){
+                temp2.push(s2.options[x].value);
+            }
+        }
+        s2.options.length=0;
+        show()
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            background: #ffa3ac;
+            width: 10%;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <table id="calender">
+        <tr>
+            <td>日</td>
+            <td>一</td>
+            <td>二</td>
+            <td>三</td>
+            <td>四</td>
+            <td>五</td>
+            <td>六</td>
+        </tr>
+    </table>
+</div>
+<script>
+    var date = new Date();
+    var day = date.getDay();
+    var count = 7;
+    var con=document.getElementById("calender");
+    for (var x=0;x<=4;x++){
+        var tr = document.createElement('tr');
+        for(var y=1;y<=7;y++){
+            var td = document.createElement('td');
+            if(x*7+y>30)
+                break;
+            if (x*7+y===day)
+                td.style.backgroundColor="red";
+            td.innerHTML=String(x*7+y);
+            tr.appendChild(td);
+        }
+        con.appendChild(tr);
+    }
+</script>
+</body>
+</html>

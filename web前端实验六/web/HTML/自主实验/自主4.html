@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function checkEmail() {
+        var str = document.form4.input1.value
+        var reg = /^([0-9A-Za-z]+[-_]?)+@[a-zA-Z0-9]+\.[a-zA-Z0-9]+$/
+        if(reg.test(str)){
+            window.alert("ok")
+        }else {
+            window.alert("输入邮箱错误")
+        }
+    }
+</script>
+</body>
+<form name="form4">
+    <input name="input1" type="text"><br>
+    <input type="button" value="测试" onclick="checkEmail()">
+</form>
+</html>

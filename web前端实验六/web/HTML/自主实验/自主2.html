@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="R()">抽奖</button><br>
+<hr>
+<div class="c1">
+    <script type="text/javascript">
+        function R() {
+            var arr = [0,0,0,0,0,0,0,0,0,0,0];
+            var cont = 0;
+            var num;
+            while (cont<3){
+                num=Math.floor((Math.random()+0.05)*10);
+                if(arr[num]===0){
+                    cont++;
+                    document.writeln("第"+cont+"个中奖号码是： "+num+"<br>");
+                    arr[num]=1;
+                }
+            }
+        }
+    </script>
+
+</div>
+</body>
+</html>

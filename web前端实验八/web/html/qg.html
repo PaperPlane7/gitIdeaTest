@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            float: left;
+        }
+        .box{
+            width: 200px;
+            height: 400px;
+        }
+        .control{
+            clear: both;
+            position: relative;
+            top: 150px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h4>选择员工</h4>
+    <div>
+        <select name="" id="part" onchange="showPerson()">
+            <option value="1">技术部</option>
+            <option value="2">销售部</option>
+            <option value="3">市场部</option>
+        </select>
+    </div>
+    <div class="container">
+        <select class="box" name="" id="person" multiple="true">
+            <option value="">李彦宏</option>
+            <option value="">吴恩达</option>
+            <option value="">李飞飞</option>
+            <option value="">马化腾</option>
+        </select>
+    </div>
+    <div class="container">
+        <form action="" class="control">
+            <input type="button" value=">" onclick="removeOne()"> <br>
+            <input type="button" value=">>>" onclick="removeAll()"><br>
+            <input type="button" value="<" onclick="addOne()"><br>
+            <input type="button" value=">>>" onclick="addAll()">
+        </form>
+    </div>
+    <div class="container">
+        <select class="box" name="" id="temp" multiple="true">
+            <option value="">刘强东</option>
+            <option value="">李白</option>
+        </select>
+    </div>
+</div>
+
+<script>
+    var p;
+    var p0 = new Array("李彦宏","吴恩达","李飞飞","马化腾");
+    var p1 = new Array("张一鸣","罗永浩","王兴");
+    var p2 = new Array("路明非","汉武帝","秦始皇","朱逸铭","周公");
+    var now=p0;
+    var temp = new Array("刘强东","李白");
+
+    function removeOne(){
+
+        // 部门选择
+        var objSelect=document.getElementById("part");
+        var strIndex=objSelect.selectedIndex;
+
+        // 第几个人
+        var person = document.getElementById("person");
+        var pIndex = person.selectedIndex;
+
+        if(pIndex!=-1)
+        {
+            temp.push(now[pIndex]);
+            if(pIndex)
+                now.splice(pIndex,pIndex);
+            else
+                now.splice(pIndex,1);
+        }
+        else
+        {
+            alert("请选中人后进行操作！");
+        }
+        showPerson();
+    }
+
+    function addOne(){
+        // 第几个人
+        var person = document.getElementById("temp");
+        var pIndex = person.selectedIndex;
+
+        if(pIndex!=-1)
+        {
+            now.push(temp[pIndex]);
+            if(pIndex)
+                temp.splice(pIndex,pIndex);
+            else
+                temp.splice(pIndex,1);
+        }
+        else
+        {
+            alert("请选中人后进行操作！");
+        }
+        showPerson();
+    }
+
+    function removeAll(){
+
+    }
+
+    function addAll(){
+
+    }
+
+    function showPerson(){
+        var sel = document.getElementById("part");
+        var strIndex=sel.selectedIndex;
+        var objsel = document.getElementById("person");
+        if(strIndex==0)
+        {
+            now = p0;
+        }
+        if(strIndex==1)
+        {
+            now = p1;
+        }
+        if(strIndex==2)
+        {
+            now = p2;
+        }
+        objsel.innerHTML="";
+        for(var i=0;i<now.length;i++)
+        {
+            var opt=document.createElement("option"); //创建一个列表项option
+            var opt_text=document.createTextNode(now[i]); //创建一个文本节点
+            opt.appendChild(opt_text); //将新的列表项节点加入DOM树
+            objsel.appendChild(opt); //将新文本节点加入DOM树
+        }
+        var tt=document.getElementById("temp");
+        tt.innerHTML="";
+        for(var i=0;i<temp.length;i++)
+        {
+            var opt=document.createElement("option"); //创建一个列表项option
+            var opt_text=document.createTextNode(temp[i]); //创建一个文本节点
+            opt.appendChild(opt_text); //将新的列表项节点加入DOM树
+            tt.appendChild(opt); //将新文本节点加入DOM树
+        }
+    }
+</script>
+</body>
+</html>

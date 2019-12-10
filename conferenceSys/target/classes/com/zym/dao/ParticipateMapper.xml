@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.zym.dao.ParticipateMapper">
+    <insert id="addParticipate">
+        insert into conference_system.participate(conId,userId)
+        value (#{conId},#{userId})
+    </insert>
+
+    <select id="queryParticipateInCon" resultType="Participate">
+        select *from conference_system.participate
+        where conId=#{conId}
+    </select>
+
+    <select id="queryParticipate" resultType="Conference">
+        select *from conference_system.conference
+        where conId in
+        (
+            select conId from conference_system.participate
+            where userId=#{userId}
+        )
+    </select>
+
+    <update id="updateName">
+        update conference_system.participate
+        set Name=#{Name}
+        where conId=#{conId} and userId=#{userId}
+    </update>
+
+    <update id="updateSex">
+        update conference_system.participate
+        set Sex=#{Sex}
+        where conId=#{conId} and userId=#{userId}
+    </update>
+
+    <update id="updateIdNum">
+        update conference_system.participate
+        set IdNum=#{IdNum}
+        where conId=#{conId} and userId=#{userId}
+    </update>
+
+    <update id="updateTel">
+        update conference_system.participate
+        set Tel=#{Tel}
+        where conId=#{conId} and userId=#{userId}
+    </update>
+
+    <update id="updateCompany">
+        update conference_system.participate
+        set Company=#{Company}
+        where conId=#{conId} and userId=#{userId}
+    </update>
+
+    <update id="updateRoom">
+        update conference_system.participate
+        set Room=#{Room}
+        where conId=#{conId} and userId=#{userId}
+    </update>
+
+    <delete id="deleteParticipate">
+        delete from conference_system.participate
+        where conId=#{conId} and userId=#{userId}
+    </delete>
+
+    <delete id="deleteParticipateInCon">
+        delete from conference_system.participate
+        where conId=#{conId}
+    </delete>
+</mapper>

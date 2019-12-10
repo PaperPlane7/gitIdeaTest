@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.zym.dao.UserMapper">
+    <insert id="addUser">
+        insert into conference_system.user(userId,userPwd)
+        value (#{userId},#{userPwd})
+    </insert>
+    
+    <update id="updateUserPwd">
+        update conference_system.user
+        set userPwd=#{userPwd}
+        where userId=#{userId}
+    </update>
+
+
+    <update id="updateUserLevelUP">
+        update conference_system.user
+        set userLevel=userLevel+1
+        where userId=#{userId}
+    </update>
+
+    <update id="updateUserLevelDown">
+        update conference_system.user
+        set userLevel=userLevel-1
+        where userId=#{userId}
+    </update>
+
+    <delete id="deleteUserById">
+        delete from conference_system.user where userId=#{userId}
+    </delete>
+    
+    <select id="queryUserById" resultType="User">
+        select *from conference_system.user where userId=#{userId}
+    </select>
+    
+    <select id="queryAllUser" resultType="User">
+        select *from conference_system.user
+        where userLevel &lt; 3
+    </select>
+
+    <select id="queryUserLevel" resultType="int">
+        select userLevel from conference_system.user
+        where userId=#{userId}
+    </select>
+
+    <delete id="deleteUserInCon">
+        delete from conference_system.participate
+        where userId=#{userId}
+    </delete>
+</mapper>
